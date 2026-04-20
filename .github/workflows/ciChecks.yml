@@ -20,11 +20,11 @@ jobs:
         deno-version: [ 'v1.41.0' ]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@f43a0e5ff2bd294095638e18286ca9a3d1956744 # v3.6.0
 
     # Install Node
     - name: Setup Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
       with:
         node-version: ${{ matrix.node-version }}
     - name: Confirm installed Node version
@@ -32,7 +32,7 @@ jobs:
 
     # Install Deno
     - name: Setup Deno ${{ matrix.deno-version }}
-      uses: denoland/setup-deno@v1
+      uses: denoland/setup-deno@11b63cf76cfcafb4e43f97b6cad24d8e8438f62d # v1.5.2
       with:
         deno-version: ${{ matrix.deno-version }}
     - name: Confirm installed Deno version
@@ -50,7 +50,7 @@ jobs:
       run: |
         echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
     - name: Setup pnpm cache
-      uses: actions/cache@v3
+      uses: actions/cache@f4b3439a656ba812b8cb417d2d49f9c810103092 # v3.4.0
       with:
         path: ${{ env.STORE_PATH }}
         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
